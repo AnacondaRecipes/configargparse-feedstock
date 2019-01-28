@@ -1,6 +1,6 @@
 {% set name = "ConfigArgParse" %}
-{% set version = "0.13.0" %}
-{% set sha256 = "e6441aa58e23d3d122055808e5e2220fd742dff6e1e51082d2a4e4ed145dd788" %}
+{% set version = "0.14.0" %}
+{% set sha256 = "2e2efe2be3f90577aca9415e32cb629aa2ecd92078adbe27b53a03e53ff12e91" %}
 
 package:
   name: {{ name|lower }}
