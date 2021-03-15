@@ -27,6 +27,7 @@ test:
   requires:
     - pyyaml
     - pip
+    - mock
   imports:
     - configargparse
   commands:
