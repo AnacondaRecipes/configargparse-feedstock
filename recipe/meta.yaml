@@ -31,7 +31,6 @@ test:
   imports:
     - configargparse
   commands:
-    - python setup.py test  # [not win]
     - python -m pip check
 
 about:
