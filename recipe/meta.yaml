@@ -9,7 +9,7 @@ source:
   sha256: 6df537158f28c5ef2e8a8146781833abbc6cb7fca81b1b55d18808ce3439235e
 
 build:
-  number: 0
+  number: 1
   noarch: python
   script: {{ PYTHON }} -m pip install . --no-deps --ignore-installed -vvv
 
@@ -33,6 +33,7 @@ test:
     - mock
     - pyyaml
     - pip
+    - pytest
   imports:
     - configargparse
   commands:
