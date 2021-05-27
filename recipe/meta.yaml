@@ -27,7 +27,8 @@ test:
   source_files:
     - tests
     - setup.py
-    - configargparse.py
+    # 5/27/2021: To fix an error message "file configargparse.py (for module configargparse) not found"
+    - configargparse.py  # [win]
   requires:
     - mock
     - pyyaml
@@ -36,7 +37,8 @@ test:
     - configargparse
   commands:
     - python -m pip check
-    - python -m setup.py test
+    - pytest
+    #- python -m setup.py test
 
 about:
   home: https://github.com/bw2/ConfigArgParse
