@@ -1,46 +1,56 @@
-{% set version = "1.2.3" %}
+{% set name = "ConfigArgParse" %}
+{% set version = "1.7.1" %}
 
 package:
-  name: configargparse
+  name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/C/ConfigArgParse/ConfigArgParse-{{ version }}.tar.gz
-  sha256: edd17be986d5c1ba2e307150b8e5f5107aba125f3574dddd02c85d5cdcfd37dc
+  url: https://pypi.io/packages/source/C/{{ name }}/{{ name|lower }}-{{ version }}.tar.gz
+  sha256: 79c2ddae836a1e5914b71d58e4b9adbd9f7779d4e6351a637b7d2d9b6c46d3d9
 
 build:
   number: 0
-  noarch: python
-  script: {{ PYTHON }} -m pip install . --no-deps --ignore-installed -vvv
+  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
+  skip: True  # [py<36]
 
 requirements:
   host:
     - python
     - pip
+    - wheel
+    - setuptools
   run:
     - python
 
 test:
   source_files:
     - tests
-    - setup.py
+  imports:
+    - configargparse
   requires:
     - pyyaml
     - pip
-  imports:
-    - configargparse
+    - pytest
   commands:
-    - python setup.py test
-    - python -m pip check
+    - pip check
+    - python -c "from importlib.metadata import version; assert(version('{{ name }}')=='{{ version }}')"
+    - pytest -v tests
 
 about:
   home: https://github.com/bw2/ConfigArgParse
-  license: MIT
-  summary: A drop-in replacement for argparse that allows options to also be set via config files and/or environment variables.
+  summary: |
+    Applications with more than a handful of user-settable options are best configured through a combination of command line args,
+    config files, hard-coded defaults, and in some cases, environment variables.
+  description: | 
+    Applications with more than a handful of user-settable options are best configured through a combination of command line args,
+    config files, hard-coded defaults, and in some cases, environment variables. Python's command line parsing modules such as
+    argparse have very limited support for config files and environment variables, so this module extends argparse to add these features.
+  license: MIT  
   license_family: MIT
   license_file: LICENSE
   dev_url: https://github.com/bw2/ConfigArgParse
-  doc_url: https://github.com/bw2/ConfigArgParse
+  doc_url: https://bw2.github.io/ConfigArgParse
 
 extra:
   recipe-maintainers:
