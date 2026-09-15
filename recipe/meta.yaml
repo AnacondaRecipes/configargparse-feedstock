@@ -1,18 +1,18 @@
 {% set name = "ConfigArgParse" %}
-{% set version = "1.7.1" %}
+{% set version = "1.7.7" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/C/{{ name }}/{{ name|lower }}-{{ version }}.tar.gz
-  sha256: 79c2ddae836a1e5914b71d58e4b9adbd9f7779d4e6351a637b7d2d9b6c46d3d9
+  url: https://pypi.org/packages/source/C/{{ name }}/{{ name|lower }}-{{ version }}.tar.gz
+  sha256: 607bea276a219912158afa1e5a716c3f8f88d542f9997dfd43bbd0b492a9f5a6
 
 build:
   number: 0
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
-  skip: True  # [py<36]
+  skip: true  # [py<36]
 
 requirements:
   host:
@@ -20,6 +20,7 @@ requirements:
     - pip
     - wheel
     - setuptools
+    - setuptools-scm
   run:
     - python
 
@@ -42,11 +43,11 @@ about:
   summary: |
     Applications with more than a handful of user-settable options are best configured through a combination of command line args,
     config files, hard-coded defaults, and in some cases, environment variables.
-  description: | 
+  description: |
     Applications with more than a handful of user-settable options are best configured through a combination of command line args,
     config files, hard-coded defaults, and in some cases, environment variables. Python's command line parsing modules such as
     argparse have very limited support for config files and environment variables, so this module extends argparse to add these features.
-  license: MIT  
+  license: MIT
   license_family: MIT
   license_file: LICENSE
   dev_url: https://github.com/bw2/ConfigArgParse
