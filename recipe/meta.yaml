@@ -1,5 +1,5 @@
 {% set name = "ConfigArgParse" %}
-{% set version = "1.7.7" %}
+{% set version = "1.8.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,9 +7,9 @@ package:
 
 source:
   url: https://pypi.org/packages/source/C/{{ name }}/{{ name|lower }}-{{ version }}.tar.gz
-  sha256: 607bea276a219912158afa1e5a716c3f8f88d542f9997dfd43bbd0b492a9f5a6
+  sha256: 22a417f4d7b00149f0af82ef7c491f8ecc4b1d5454633fd319b386f5eb806f92
 
-# Upstream source - https://github.com/bw2/ConfigArgParse/blob/v1.7.7/setup.py
+# Upstream source - https://github.com/bw2/ConfigArgParse/blob/v1.8.0/setup.py
 build:
   number: 0
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
